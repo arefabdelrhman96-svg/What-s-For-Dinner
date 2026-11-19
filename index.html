@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What's For Dinner</title>
+    <link rel="icon" href="./images/favicon.png">
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Font Awesome (للدمبل وسنبلة القمح فقط) -->
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="./main.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="app-header">
+    <div class="container-xxl d-flex align-items-center justify-content-between py-3">
+
+      <!-- اللوجو + الاسم -->
+      <div class="d-flex align-items-center gap-3">
+        <div class="logo-badge"><i class="fa-solid fa-utensils"></i></div>
+        <div>
+          <h1 class="app-title mb-0">What's For Dinner</h1>
+          <small class="text-muted">Your daily meal inspiration</small>
+        </div>
+      </div>
+
+      <!-- أيقونات الشاشات الكبيرة -->
+      <div class="header-icons d-none d-sm-flex align-items-center gap-3">
+        <button class="icon-btn" aria-label="Saved"><i class="bi bi-bookmark-fill"></i></button>
+        <button class="icon-btn" aria-label="History"><i class="bi bi-clock-history"></i></button>
+        <button class="icon-btn" aria-label="Settings"><i class="bi bi-gear-fill"></i></button>
+        <div class="avatar">
+          <i class="bi bi-person-fill"></i>
+          <img src="./images/avatar-4.jpg" alt="User" onerror="this.remove()">
+        </div>
+      </div>
+
+      <!-- زرار القائمة (الموبايل فقط) -->
+      <button class="menu-btn d-sm-none" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-label="Menu">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+
+    <!-- القائمة اللي بتفتح في الموبايل -->
+    <div class="collapse d-sm-none" id="mobileMenu">
+      <div class="mobile-menu">
+        <button class="icon-btn" aria-label="Saved"><i class="bi bi-bookmark-fill"></i></button>
+        <button class="icon-btn" aria-label="History"><i class="bi bi-clock-history"></i></button>
+        <button class="icon-btn" aria-label="Settings"><i class="bi bi-gear-fill"></i></button>
+        <div class="avatar">
+          <i class="bi bi-person-fill"></i>
+          <img src="./images/avatar-4.jpg" alt="User" onerror="this.remove()">
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ============ MAIN ============ -->
+  <main class="container-xxl py-4">
+    <div class="row g-4">
+
+      <!-- Image side -->
+      <div class="col-lg-5">
+        <div class="img-panel">
+          <img id="recipeImg" src="" alt="Recipe">
+          <div class="rating-badge"><i class="bi bi-star-fill"></i> <b id="rating">4.5</b> <span id="reviews">(324 reviews)</span></div>
+
+          <div class="stats-card">
+            <div class="row text-center g-0">
+              <div class="col-4">
+                <i class="bi bi-clock-fill stat-icon text-orange"></i>
+                <div class="stat-label">Prep Time</div>
+                <div class="stat-value" id="prep">15 min</div>
+              </div>
+              <div class="col-4">
+                <i class="bi bi-fire stat-icon text-danger"></i>
+                <div class="stat-label">Cook Time</div>
+                <div class="stat-value" id="cook">15 min</div>
+              </div>
+              <div class="col-4">
+                <i class="bi bi-people-fill stat-icon text-primary"></i>
+                <div class="stat-label">Servings</div>
+                <div class="stat-value" id="servings">4 people</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details side -->
+      <div class="col-lg-7">
+        <div class="details-panel">
+          <div class="d-flex justify-content-between align-items-start gap-3">
+            <div>
+              <div class="mb-2">
+                <span class="tag tag-green" id="tagLevel">Easy</span>
+                <span class="tag tag-blue" id="tagCuisine">Asian</span>
+              </div>
+              <h2 class="recipe-title" id="title">Chicken Stir-Fry</h2>
+              <p class="recipe-desc" id="desc">Quick and healthy stir-fry with colorful vegetables</p>
+            </div>
+            <div class="d-flex gap-2 flex-shrink-0">
+              <button class="square-btn" aria-label="Save"><i class="bi bi-bookmark-fill"></i></button>
+              <button class="square-btn" aria-label="Share"><i class="bi bi-share-fill"></i></button>
+            </div>
+          </div>
+         <!-- التنبيه (بيظهر في الوصفات اللي فيها alert بس) -->
+          <div class="recipe-alert d-none" id="recipeAlert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <div>
+              <div class="alert-title" id="alertTitle">Extended Preparation Time</div>
+              <div class="alert-text" id="alertText">This recipe requires more than 45 minutes to prepare. Plan accordingly!</div>
+            </div>
+          </div>
+          <ul class="nav nav-tabs recipe-tabs nav-fill mt-3" role="tablist">
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-ing" type="button"><i class="bi bi-list-check"></i> Ingredients</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-ins" type="button"><i class="bi bi-book-fill"></i> Instructions</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-nut" type="button"><i class="bi bi-pie-chart-fill"></i> Nutrition</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-tip" type="button"><i class="bi bi-lightbulb-fill"></i> Chef's Tips</button></li>
+          </ul>
+
+          <div class="tab-content pt-3">
+            <div class="tab-pane fade show active" id="tab-ing"><ol class="ing-list scroll-box" id="ingList"></ol></div>
+            <div class="tab-pane fade" id="tab-ins"><ol class="step-list scroll-box" id="stepList"></ol></div>
+            <div class="tab-pane fade" id="tab-nut"><div class="row g-3 nut-grid" id="nutGrid"></div></div>
+            <div class="tab-pane fade" id="tab-tip"><ul class="tip-list scroll-box" id="tipList"></ul></div>
+          </div>
+
+          <button class="btn-another mt-4" id="anotherBtn"><i class="bi bi-arrow-repeat"></i> Try Another Recipe</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
